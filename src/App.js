@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Header from "components/Header";
+import CartFeature from "features/Cart";
+import ProductFeature from "features/Product";
+import React from "react";
+import { Link, Route, Switch } from "react-router-dom";
+import NotFound from "./components/NotFound";
+import CounterFeature from "./features/Counter";
+import Song from "./features/Song";
+import Todo from "./features/Todo";
+import './index.css'
 function App() {
+   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+        <Header />
+      <Switch>
+      <Route path='/Song' component={Song}/>
+      <Route path='/Todo' component={Todo}/>
+      <Route path='/products' component={ProductFeature} />
+      <Route path='/cart' component={CartFeature}/>
+
+      <Route path='/' component={CounterFeature} exact />
+
+      <Route component={NotFound}/>
+      </Switch>
     </div>
   );
 }
